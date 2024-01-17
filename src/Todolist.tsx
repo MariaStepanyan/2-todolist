@@ -22,16 +22,15 @@ export function Todolist(props: PropsType) {
     setNewtaskTitle(e.currentTarget.value)
   }
 
-  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.charCode === 13) {
-      props.addTask(newtaskTitle)
-      setNewtaskTitle('')
-    }
-  }
-
   const addtask = () => {
     props.addTask(newtaskTitle)
     setNewtaskTitle('')
+  }
+
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      addtask()
+    }
   }
 
   const onAllClickHandler = () => props.changeFilter('All')
